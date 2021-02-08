@@ -2,6 +2,8 @@ package com.chanda.flixster.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +20,8 @@ import com.bumptech.glide.Glide;
 import com.chanda.flixster.DetailActivity;
 import com.chanda.flixster.R;
 import com.chanda.flixster.models.Movie;
+
+import org.parceler.Parcels;
 
 import java.util.List;
 
@@ -83,7 +87,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder>{
                     Toast.makeText(context, movie.getTitle(), Toast.LENGTH_SHORT).show();
                     // 2. Navigate to a new activity on tap
                     Intent i = new Intent(context, DetailActivity.class);
-                    i.putExtra("title", movie.getTitle());
+                    i.putExtra("movie", Parcels.wrap(movie));
                     context.startActivity(i);
 
                 }
